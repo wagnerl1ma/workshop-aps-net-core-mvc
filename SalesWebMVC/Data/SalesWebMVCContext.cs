@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SalesWebMVC.Models
 {
+    //esta classe vai encapsular a sessão com o banco de dados
     public class SalesWebMVCContext : DbContext
     {
         public SalesWebMVCContext (DbContextOptions<SalesWebMVCContext> options)
