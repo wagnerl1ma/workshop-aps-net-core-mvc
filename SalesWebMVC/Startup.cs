@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using SalesWebMVC.Models;
 using SalesWebMVC.Data;
+using SalesWebMVC.Services;
 
 namespace SalesWebMVC {
     public class Startup {
@@ -38,6 +39,7 @@ namespace SalesWebMVC {
 
 
             services.AddScoped<SeedingService>(); //registrando serviço
+            services.AddScoped<SellerService>();  //registrando serviço
         }
 
         // Este método é chamado pelo tempo de execução. Use este método para configurar o pipeline de solicitação de HTTP.
