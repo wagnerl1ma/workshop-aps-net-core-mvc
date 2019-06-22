@@ -1,8 +1,7 @@
-﻿using SalesWebMVC.Models;
-using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using SalesWebMVC.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace SalesWebMVC.Services
 {
@@ -26,5 +25,19 @@ namespace SalesWebMVC.Services
             _context.Add(obj);
             _context.SaveChanges();
         }
+
+        public Vendedor FindById(int id)
+        {
+            return _context.Vendedor.FirstOrDefault(obj => obj.Id == id);
+        }
+
+        public void Remove(int id)
+        {
+            var obj = _context.Vendedor.Find(id);
+            _context.Vendedor.Remove(obj);
+            _context.SaveChanges();
+        }
+
+
     }
 }
