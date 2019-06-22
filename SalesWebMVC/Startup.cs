@@ -38,8 +38,9 @@ namespace SalesWebMVC {
                     builder.MigrationsAssembly("SalesWebMVC")));
 
 
-            services.AddScoped<SeedingService>(); //registrando serviço
-            services.AddScoped<SellerService>();  //registrando serviço
+            services.AddScoped<SeedingService>(); //registrando serviço na injeção de dependencias
+            services.AddScoped<SellerService>();  //registrando serviço na injeção de dependencias
+            services.AddScoped<DepartamentService>(); //registrando serviço na injeção de dependencias
         }
 
         // Este método é chamado pelo tempo de execução. Use este método para configurar o pipeline de solicitação de HTTP.
