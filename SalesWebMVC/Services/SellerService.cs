@@ -3,6 +3,7 @@ using SalesWebMVC.Models;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using SalesWebMVC.Services.Exceptions;
 
 namespace SalesWebMVC.Services
 {
@@ -37,6 +38,26 @@ namespace SalesWebMVC.Services
             var obj = _context.Vendedor.Find(id);
             _context.Vendedor.Remove(obj);
             _context.SaveChanges();
+        }
+
+        public void Update(Vendedor obj)
+        {
+            if(!_context.Vendedor.Any(x => x.Id == obj.Id))  //"ANY" --> verifica se existe algum registro no banco de dados conforme a condição criada
+            {
+                throw new KeyNotFoundException("Id não encontrado!");
+            }
+            try
+            {
+                _context.Update(obj);
+                _context.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException e)
+            {
+                throw new DbConcurrencyException(e.Message);
+            }
+            {
+
+            }
         }
 
 
