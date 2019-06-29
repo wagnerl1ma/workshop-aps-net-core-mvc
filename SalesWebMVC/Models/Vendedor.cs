@@ -8,17 +8,28 @@ namespace SalesWebMVC.Models
     public class Vendedor
     {
         public int Id { get; set; }
+
+        [Required(ErrorMessage = "É necessário colocar o {0}")] //obrigatorio
+        [StringLength(60, MinimumLength = 3, ErrorMessage ="O tamanho do {0} deve ser entre {2} e {1} caracteres!")]
         public string Nome { get; set; }
 
+
+        [Required(ErrorMessage = "É necessário colocar o {0}")] //obrigatorio
+        [EmailAddress(ErrorMessage ="Entre com um e-mail válido !")]
         [Display(Name = "E-mail")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
+
+        [Required(ErrorMessage = "É necessário colocar a {0}")] //obrigatorio
         [Display(Name = "Data de Nascimento")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DataNasc { get; set; }
 
+
+        [Required(ErrorMessage = "É necessário colocar o {0}")] //obrigatorio
+        [Range(100.0, 50000.0, ErrorMessage = "O {0} deve ser no mínimo {1} e no máximo {2}")]
         [Display(Name = "Salário Base")]
         [DisplayFormat(DataFormatString = "{0:F2}")]
         public double SalarioBase { get; set; }
